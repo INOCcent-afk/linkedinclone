@@ -7,9 +7,9 @@ type Props = {
 
 const TabButton: FC<Props> = ({ Icon, Desc }: Props) => {
   return (
-    <li className="flex gap-2">
-      <div className="">{Icon}</div>
-      <div className="">{Desc}</div>
+    <li className="flex flex-col items-center cursor-pointer">
+      <div className="w-6">{Icon}</div>
+      <div className="text-sm">{Desc}</div>
     </li>
   );
 };

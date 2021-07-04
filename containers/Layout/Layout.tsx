@@ -7,10 +7,11 @@ type Props = {
 
 const Layout: FC<Props> = ({ children }: Props) => {
   return (
-    <div>
+    <div className="bg-gray-100">
       <Header />
-      {children}
-      <footer></footer>
+      <div className="mx-2 py-28 md:py-36 flex justify-between gap-5 max-w-6xl xl:mx-auto">
+        {children}
+      </div>
     </div>
   );
 };
