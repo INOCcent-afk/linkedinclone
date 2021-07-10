@@ -1,50 +1,44 @@
-import Box from "../components/Box";
+import React from "react";
+
 import LeftPanel from "../containers/LeftPanel";
 import RightPanel from "../containers/RightPanel";
 import CenterPanel from "../containers/CenterPanel";
+import NewsContainer from "../containers/NewsContainer";
+import Footer from "../components/Footer";
+import Profile from "../components/Profile";
+import Groups from "../components/Groups";
+import PostInput from "../components/PostInput";
+import Post from "../components/Post";
 
-export default function Home() {
+import { getNews } from "../utils/api/getNews";
+
+const Home = ({ news }: any) => {
   return (
     <>
       <LeftPanel>
-        <Box>
-          <h1>HELLO WORLD</h1>
-        </Box>
-        <Box>
-          <h1>HELLO WORLD</h1>
-        </Box>
+        <Profile />
+        <Groups />
       </LeftPanel>
       <CenterPanel>
-        <Box>
-          <h1>TEST</h1>
-        </Box>
-        <Box>
-          <h1>TEST</h1>
-        </Box>
-        <Box>
-          <h1>TEST</h1>
-        </Box>
-        <Box>
-          <h1>TEST</h1>
-        </Box>
-        <Box>
-          <h1>TEST</h1>
-        </Box>
-        <Box>
-          <h1>TEST</h1>
-        </Box>
-        <Box>
-          <h1>TEST</h1>
-        </Box>
-        <Box>
-          <h1>TEST</h1>
-        </Box>
+        <div className="md:hidden w-full">
+          <Profile />
+        </div>
+        <PostInput />
+        <Post />
+        <Post />
       </CenterPanel>
       <RightPanel>
-        <Box>
-          <h1>YEST</h1>
-        </Box>
+        <NewsContainer news={news} />
+        <Footer />
       </RightPanel>
     </>
   );
-}
+};
+
+export default Home;
+
+export const getStaticProps = async () => {
+  const news = await getNews();
+
+  return { props: { news } };
+};

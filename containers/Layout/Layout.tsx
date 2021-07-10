@@ -9,7 +9,7 @@ const Layout: FC<Props> = ({ children }: Props) => {
   return (
     <div className="bg-gray-100">
       <Header />
-      <div className="mx-2 py-28 md:py-36 flex justify-between gap-5 max-w-6xl xl:mx-auto">
+      <div className="mx-2 py-20 lg:py-24  flex justify-between gap-5 max-w-6xl xl:mx-auto">
         {children}
       </div>
     </div>
