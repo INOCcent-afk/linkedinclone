@@ -6,7 +6,9 @@ import News from "../../components/News";
 import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { getNews as getNewsFromApi } from "../../utils/api/getNews";
 import { getNews } from "../../redux/News.slice";
+import { useQuery } from "react-query";
 
 type Props = {
   news: [];
@@ -17,14 +19,17 @@ const NewsContainer: FC<Props> = ({ news }: Props) => {
 
   const newsData = useAppSelector((state) => state.news.news);
 
+  const { data } = useQuery("news", getNewsFromApi, {
+    initialData: news,
+  });
+
   React.useEffect(() => {
-    dispatch(getNews(news));
+    dispatch(getNews(data));
   }, []);
 
   return (
     <Box>
       <h1 className="py-2 px-5">Today's top courses</h1>
-
       {newsData.map((news) => (
         <News
           key={news.id}

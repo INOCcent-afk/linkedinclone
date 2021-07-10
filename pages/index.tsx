@@ -1,44 +1,44 @@
 import React from "react";
 
-import LeftPanel from "../containers/LeftPanel";
-import RightPanel from "../containers/RightPanel";
-import CenterPanel from "../containers/CenterPanel";
-import NewsContainer from "../containers/NewsContainer";
-import Footer from "../components/Footer";
-import Profile from "../components/Profile";
-import Groups from "../components/Groups";
-import PostInput from "../components/PostInput";
-import Post from "../components/Post";
+import Loader from "react-loader-spinner";
 
-import { getNews } from "../utils/api/getNews";
+import { signIn, useSession } from "next-auth/client";
+import { useRouter } from "next/router";
 
-const Home = ({ news }: any) => {
+const Home = () => {
+  const [session] = useSession();
+  const router = useRouter();
+  const [show, setShow] = React.useState(false);
+
+  React.useEffect(() => {
+    if (session) {
+      router.push("/home");
+    }
+    let timer = setTimeout(() => {
+      setShow(true);
+    }, 1500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
-    <>
-      <LeftPanel>
-        <Profile />
-        <Groups />
-      </LeftPanel>
-      <CenterPanel>
-        <div className="md:hidden w-full">
-          <Profile />
+    <div className="absolute center-transform">
+      {!show ? (
+        <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
+      ) : (
+        <div
+          className="m-auto font-bold text-4xl cursor-pointer"
+          onClick={() =>
+            signIn("google", { callbackUrl: "http://localhost:3000/home" })
+          }
+        >
+          Google Sign in!
         </div>
-        <PostInput />
-        <Post />
-        <Post />
-      </CenterPanel>
-      <RightPanel>
-        <NewsContainer news={news} />
-        <Footer />
-      </RightPanel>
-    </>
+      )}
+    </div>
   );
 };
 
 export default Home;
-
-export const getStaticProps = async () => {
-  const news = await getNews();
-
-  return { props: { news } };
-};
