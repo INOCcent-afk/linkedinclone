@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import LeftPanel from "../containers/LeftPanel";
 import RightPanel from "../containers/RightPanel";
@@ -21,7 +21,7 @@ import { useRouter } from "next/router";
 
 import Loader from "react-loader-spinner";
 
-const home = ({ news, postsApi }: any) => {
+const Home: FC = ({ news, postsApi }: any) => {
   const dispatch = useAppDispatch();
   const posts = useAppSelector((state) => state.posts.posts);
   const [show, setShow] = React.useState(false);
@@ -87,7 +87,7 @@ const home = ({ news, postsApi }: any) => {
   );
 };
 
-export default home;
+export default Home;
 
 export const getStaticProps = async () => {
   const news = await getNews();
