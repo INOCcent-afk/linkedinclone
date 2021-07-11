@@ -33,9 +33,8 @@ const PostInput: FC = () => {
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
 
-    AddPost(postData).then(() => {
-      dispatch(createPost(postData));
-    });
+    AddPost(postData);
+    dispatch(createPost(postData));
 
     setPostData({
       body: "",

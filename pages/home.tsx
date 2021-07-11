@@ -93,7 +93,7 @@ const Home: FC = ({ news, postsApi }: any) => {
 
 export default Home;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async (context: any) => {
   const news = await getNews();
   const postsApi = await getPostFromApi();
 
