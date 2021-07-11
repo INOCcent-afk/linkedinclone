@@ -30,6 +30,9 @@ const Home: FC = ({ news, postsApi }: any) => {
     initialData: postsApi,
   });
 
+  console.log(postsApi);
+  console.log(posts);
+
   const [session] = useSession();
   const router = useRouter();
 
