@@ -1,8 +1,4 @@
-import {
-  bindActionCreators,
-  createSlice,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: PostsType = {
   posts: [],
@@ -17,6 +13,7 @@ type PostType = {
   name: string;
   email: string;
   body: string;
+  image: string;
 };
 
 export const PostsSlice = createSlice({

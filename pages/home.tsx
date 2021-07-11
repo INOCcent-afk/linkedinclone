@@ -71,9 +71,10 @@ const Home: FC = ({ news, postsApi }: any) => {
               .map((post, index) => (
                 <Post
                   key={index}
-                  name={session?.user?.name}
+                  name={post.name}
                   body={post.body}
-                  email={session?.user?.email}
+                  email={post.email}
+                  image={post.image}
                 />
               ))}
           </CenterPanel>

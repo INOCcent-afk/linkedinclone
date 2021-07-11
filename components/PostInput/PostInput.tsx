@@ -15,12 +15,15 @@ import { createPost } from "../../redux/Posts.slice";
 
 import { createPost as createPostFromApi } from "../../utils/api/createPost";
 import { useMutation } from "react-query";
+import { useSession } from "next-auth/client";
 
 const PostInput: FC = () => {
+  const [session] = useSession();
   const [postData, setPostData] = React.useState({
     body: "",
-    name: "",
-    email: "",
+    name: session?.user?.name,
+    email: session?.user?.email,
+    image: session?.user?.image,
   });
 
   const dispatch = useAppDispatch();
@@ -36,8 +39,9 @@ const PostInput: FC = () => {
 
     setPostData({
       body: "",
-      name: "",
-      email: "",
+      name: session?.user?.name,
+      email: session?.user?.email,
+      image: session?.user?.image,
     });
   };
 
