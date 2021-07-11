@@ -32,7 +32,7 @@ const Home = () => {
           className="m-auto font-bold text-4xl cursor-pointer"
           onClick={() =>
             signIn("google", {
-              callbackUrl: "http://localhost:3000/home",
+              callbackUrl: "https://linkedinclone.vercel.app/home",
             })
           }
         >
