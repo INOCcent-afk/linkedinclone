@@ -21,7 +21,7 @@ const Home = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [session]);
 
   return (
     <div className="absolute center-transform">
@@ -30,12 +30,7 @@ const Home = () => {
       ) : (
         <div
           className="m-auto font-bold text-4xl cursor-pointer"
-          onClick={() =>
-            signIn("google", {
-              callbackUrl:
-                "https://linkedinclone-msypg94u6-inoccent-afk.vercel.app/home",
-            })
-          }
+          onClick={() => signIn("google")}
         >
           Google Sign in!
         </div>
