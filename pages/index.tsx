@@ -32,7 +32,7 @@ const Home = () => {
           className="m-auto font-bold text-4xl cursor-pointer"
           onClick={() =>
             signIn("google", {
-              callbackUrl: process.env.NEXT_PUBLIC_NEXTAUTH_URL,
+              callbackUrl: "http://localhost:3000/home",
             })
           }
         >
