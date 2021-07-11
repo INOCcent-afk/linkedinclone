@@ -1,5 +1,8 @@
 import axios from "axios";
 
 export const createPost = async (newPost: any) => {
-  const response = await axios.post("http://localhost:5000/posts", newPost);
+  const response = await axios.post(
+    "https://damp-dusk-47703.herokuapp.com/posts",
+    newPost
+  );
 };

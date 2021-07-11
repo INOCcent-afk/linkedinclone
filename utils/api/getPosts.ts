@@ -1,7 +1,9 @@
 import axios from "axios";
 
 export const getPosts = async () => {
-  const response = await axios.get("http://localhost:5000/posts");
+  const response = await axios.get(
+    "https://damp-dusk-47703.herokuapp.com/posts"
+  );
 
   return response.data;
 };
