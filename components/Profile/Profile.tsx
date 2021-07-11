@@ -5,8 +5,12 @@ import Box from "../Box";
 import { BookmarkIcon, UserAddIcon } from "@heroicons/react/solid";
 import { signOut, useSession } from "next-auth/client";
 
+import Image from "next/image";
+
 const Profile = () => {
   const [session] = useSession();
+
+  const src = session?.user?.image;
 
   return (
     <Box>
@@ -14,7 +18,13 @@ const Profile = () => {
         <div className="h-16 w-full bg-blue-500"></div>
         <div className="relative w-20 h-20 bg-red-300 flex items-center justify-center rounded-full border-2 border-white -mt-10 mx-auto overflow-hidden">
           {session?.user?.image ? (
-            <img src={session?.user?.image} alt="profile-picture" />
+            <Image
+              loader={() => src!}
+              width="80"
+              height="80"
+              src={src!}
+              alt="profile-picture"
+            />
           ) : (
             <div className="font-bold text-lg">
               <span>{session?.user?.name?.charAt(0)}</span>

@@ -8,6 +8,8 @@ import {
   ShareIcon,
 } from "@heroicons/react/solid";
 
+import Image from "next/image";
+
 import { useSession } from "next-auth/client";
 
 import Box from "../Box";
@@ -21,13 +23,21 @@ type Props = {
 const Post: FC<Props> = ({ email, name, body }: Props) => {
   const [session] = useSession();
 
+  const src = session?.user?.image;
+
   return (
     <Box>
       <div className="p-4">
         <div className="flex gap-5 items-center">
           <div className="relative w-14 h-14 bg-red-300 flex items-center justify-center rounded-full border-2 border-white overflow-hidden">
             {session?.user?.image?.length ? (
-              <img src={session?.user?.image} alt="profile-picture" />
+              <Image
+                loader={() => src!}
+                width="56"
+                height="56"
+                src={src!}
+                alt="profile-picture"
+              />
             ) : (
               <div className="font-bold text-lg">
                 <span>{session?.user?.name?.charAt(0)}</span>
