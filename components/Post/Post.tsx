@@ -35,7 +35,7 @@ const Post: FC<Props> = ({ email, name, body, image }: Props) => {
               />
             ) : (
               <div className="font-bold text-lg">
-                <span>{name!.charAt(0)}</span>
+                <span>{name?.charAt(0)}</span>
               </div>
             )}
           </div>

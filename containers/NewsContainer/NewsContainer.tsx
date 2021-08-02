@@ -29,7 +29,9 @@ const NewsContainer: FC<Props> = ({ news }: Props) => {
 
   return (
     <Box>
-      <h1 className="py-2 px-5">Today's top courses</h1>
+      <h1 className="py-2 px-5" data-test="testCourses">
+        Today's top courses
+      </h1>
       {newsData.map((news) => (
         <News
           key={news.id}
